@@ -1,0 +1,17 @@
+# Gunakan base image OpenJDK 11
+FROM openjdk:11
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Download PostgreSQL JDBC driver
+ADD https://jdbc.postgresql.org/download/postgresql-42.2.24.jar postgresql.jar
+
+# Copy semua file ke dalam container
+COPY . .
+
+# Compile aplikasi
+RUN javac -cp postgresql.jar src/main/*.java src/dao/*.java
+
+# Jalankan aplikasi
+CMD ["java", "-cp", "postgresql.jar:src", "main.App"]
