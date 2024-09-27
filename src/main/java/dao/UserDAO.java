@@ -29,6 +29,7 @@ public class UserDAO {
             stmt.setString(1, username);
             stmt.setString(2, password);
             stmt.executeUpdate();
+            System.out.println("====================");
             System.out.println("User berhasil ditambahkan.");
         } catch (SQLException e) {
             e.printStackTrace();

@@ -4,10 +4,12 @@ public class Service {
     private int id;
     private String serviceName;
     private double basePrice;
+    private int duration;
 
-    public Service(String serviceName, double basePrice) {
+    public Service(String serviceName, double basePrice, int duration) {
         this.serviceName = serviceName;
         this.basePrice = basePrice;
+        this.duration = duration;
     }
 
     public int getId() {
@@ -28,10 +30,18 @@ public class Service {
 
     public void setBasePrice(double basePrice) {
       this.basePrice = basePrice;
-  }
+    }
 
-  public double getBasePrice() {
+    public double getBasePrice() {
       return basePrice;
-  }
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 }
 

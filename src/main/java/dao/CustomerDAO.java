@@ -16,6 +16,7 @@ public class CustomerDAO {
             stmt.setString(2, phone);
             stmt.setString(3, email);
             stmt.executeUpdate();
+            System.out.println("====================");
             System.out.println("Customer berhasil ditambahkan.");
         } catch (SQLException e) {
             e.printStackTrace();
