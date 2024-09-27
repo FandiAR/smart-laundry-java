@@ -16,7 +16,7 @@ public class ServiceDAO {
             stmt.setDouble(2, basePrice);
             stmt.setInt(3, duration);
             stmt.executeUpdate();
-            System.out.println("====================");
+            System.out.println("========================================");
             System.out.println("Service berhasil ditambahkan.");
         } catch (SQLException e) {
             e.printStackTrace();

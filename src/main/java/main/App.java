@@ -13,7 +13,7 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         UserDAO userDAO = new UserDAO();
-        ServiceDAO serviceDAO = new ServiceDAO(); // Inisialisasi di sini
+        ServiceDAO serviceDAO = new ServiceDAO();
 
         // Login
         System.out.println("=== Login ===");
@@ -23,12 +23,12 @@ public class App {
         String password = scanner.nextLine();
 
         if (!userDAO.login(username, password)) {
-            System.out.println("====================");
+            System.out.println("========================================");
             System.out.println("Login gagal! Username atau password salah.");
             return;
         }
 
-        System.out.println("====================");
+        System.out.println("========================================");
         System.out.println("Login berhasil!");
 
         // Menu pilihan
@@ -39,14 +39,14 @@ public class App {
             System.out.println("3. Input Data Order");
             System.out.println("4. Input Data Service");
             System.out.println("5. Keluar");
-            System.out.println("====================");
+            System.out.println("========================================");
             System.out.print("Pilih opsi: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.println("====================");
+                    System.out.println("========================================");
                     System.out.print("Masukkan username baru: ");
                     String newUsername = scanner.nextLine();
                     System.out.print("Masukkan password baru: ");
@@ -55,7 +55,7 @@ public class App {
                     break;
                 case 2:
                     CustomerDAO customerDAO = new CustomerDAO();
-                    System.out.println("====================");
+                    System.out.println("========================================");
                     System.out.print("Masukkan nama customer: ");
                     String customerName = scanner.nextLine();
                     System.out.print("Masukkan nomor telepon customer: ");
@@ -66,7 +66,7 @@ public class App {
                     break;
                 case 3:
                     LaundryOrderDAO orderDAO = new LaundryOrderDAO();
-                    System.out.println("====================");
+                    System.out.println("========================================");
                     System.out.print("Masukkan ID customer: ");
                     int customerId = scanner.nextInt();
                     System.out.print("Masukkan berat pakaian (kg): ");
@@ -78,21 +78,21 @@ public class App {
                     orderDAO.insertOrder(customerId, weight, serviceId, startDate);
                     break;
                 case 4:
-                    System.out.println("====================");
+                    System.out.println("========================================");
                     System.out.print("Masukkan nama layanan: ");
                     String serviceName = scanner.nextLine();
                     System.out.print("Masukkan harga per kilogram: ");
                     double basePrice = scanner.nextDouble();
                     System.out.print("Masukkan durasi layanan (hari): ");
-                    int duration = scanner.nextInt();  // Tambahkan input untuk durasi
-                    serviceDAO.insertService(serviceName, basePrice, duration); // Gunakan 3 argumen
+                    int duration = scanner.nextInt();
+                    serviceDAO.insertService(serviceName, basePrice, duration);
                     break;
                 case 5:
-                    System.out.println("====================");
+                    System.out.println("========================================");
                     System.out.println("Keluar aplikasi...");
                     return;
                 default:
-                    System.out.println("====================");
+                    System.out.println("========================================");
                     System.out.println("Opsi tidak valid!");
             }
         }
