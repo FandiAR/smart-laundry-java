@@ -8,3 +8,4 @@ dao\UserDAO.class
 dao\LaundryOrderDAO.class
 dao\ServiceDAO.class
 main\LaundryOrder.class
+utils\CurrencyFormatter.class

@@ -23,12 +23,22 @@ public class UserDAO {
     }
 
     public void addUser(String username, String password) {
+        if (username == null || username.trim().isEmpty()) {
+            System.out.println("========================================");
+            System.out.println("Error: Username tidak boleh kosong.");
+            return;
+        } else if (password == null || password.trim().isEmpty()) {
+            System.out.println("========================================");
+            System.out.println("Error: Password tidak boleh kosong.");
+            return;
+        }
         String query = "INSERT INTO users (username, password) VALUES (?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, username);
             stmt.setString(2, password);
             stmt.executeUpdate();
+            System.out.println("========================================");
             System.out.println("User berhasil ditambahkan.");
         } catch (SQLException e) {
             e.printStackTrace();
