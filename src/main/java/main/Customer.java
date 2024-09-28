@@ -13,7 +13,7 @@ public class Customer {
         this.email = email;
     }
 
-    public int getId() {
+    public int getCustomerById() {
         return id;
     }
 

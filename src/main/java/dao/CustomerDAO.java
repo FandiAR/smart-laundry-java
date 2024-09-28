@@ -9,7 +9,7 @@ import main.Customer;
 import main.DatabaseConnection;
 
 public class CustomerDAO {
-    public Customer getId(int customerId) {
+    public Customer getCustomerById(int customerId) {
         String query = "SELECT * FROM customers WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

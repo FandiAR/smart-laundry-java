@@ -14,11 +14,11 @@ import utils.CurrencyFormatter;
 
 public class LaundryOrderDAO {
     private ServiceDAO serviceDAO = new ServiceDAO();
-    private CustomerDAO customerDAO = new CustomerDAO(); // Instantiate customerDAO
+    private CustomerDAO customerDAO = new CustomerDAO();
 
     public void insertOrder(int customerId, double weight, int serviceId, LocalDate startDate) {
         // Ambil data customer berdasarkan customerId
-        Customer customer = customerDAO.getId(customerId);
+        Customer customer = customerDAO.getCustomerById(customerId);
         if (customer == null) {
             System.out.println("========================================");
             System.out.println("Error: Customer tidak ditemukan.");
