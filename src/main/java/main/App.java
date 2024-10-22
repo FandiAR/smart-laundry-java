@@ -62,7 +62,9 @@ public class App {
                     String phone = scanner.nextLine();
                     System.out.print("Masukkan email customer (optional): ");
                     String email = scanner.nextLine();
-                    customerDAO.insertCustomer(customerName, phone, email);
+                    
+                    Customer customer = new Customer(0, customerName, phone, email);
+                    customerDAO.insertCustomer(customer); // Menggunakan Customer sebagai parameter
                     break;
                 case 3:
                     LaundryOrderDAO orderDAO = new LaundryOrderDAO();

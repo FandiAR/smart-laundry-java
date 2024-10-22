@@ -29,12 +29,20 @@ public class CustomerDAO {
         return null;
     }
 
-    public void insertCustomer(String name, String phone, String email) {
-        if (name == null || name.trim().isEmpty()) {
+     // Method untuk mencetak detail customer dengan Method Reference
+    public void printCustomerDetails(Customer customer) {
+        // Menggunakan Method Reference
+        System.out.println("Nama: " + customer.getName());
+        System.out.println("Telepon: " + customer.getPhone());
+        System.out.println("Email: " + customer.getEmail());
+    }
+
+    public void insertCustomer(Customer customer) {
+        if (customer.getName() == null || customer.getName().trim().isEmpty()) {
             System.out.println("========================================");
             System.out.println("Error: Nama customer tidak boleh kosong.");
             return;
-        } else if (phone == null || phone.trim().isEmpty()) {
+        } else if (customer.getPhone() == null || customer.getPhone().trim().isEmpty()) {
             System.out.println("========================================");
             System.out.println("Error: Nomor telepon customer tidak boleh kosong.");
             return;
@@ -42,13 +50,14 @@ public class CustomerDAO {
 
         String query = "INSERT INTO customers (name, phone, email) VALUES (?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, name);
-            stmt.setString(2, phone);
-            stmt.setString(3, email);
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, customer.getName());
+            stmt.setString(2, customer.getPhone());
+            stmt.setString(3, customer.getEmail());
             stmt.executeUpdate();
             System.out.println("========================================");
             System.out.println("Customer berhasil ditambahkan.");
+            printCustomerDetails(customer);  // Method Reference
         } catch (SQLException e) {
             e.printStackTrace();
         }
